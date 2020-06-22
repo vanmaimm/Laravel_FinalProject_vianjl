@@ -59,6 +59,6 @@ class ProductSeeder extends Seeder
                     'design'=>"user"
                 ]);
             }
-    }
+        }
     }
 }
