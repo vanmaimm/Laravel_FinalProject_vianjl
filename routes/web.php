@@ -26,5 +26,8 @@ Route::get("/admin/dashboard","Admin\DashboardController@index")->name("admin.da
 Route::get("/admin/product","Admin\DashboardController@product");
 Route::get("/admin/product/insert", "Admin\DashboardController@create")->name("admin.create");
 Route::post("/admin/product", "Admin\DashboardController@store");
+Route::delete("/admin/product/delete/{id}", "Admin\DashboardController@destroy");
+
+
 Route::get("/home/{cateName}/{id}", "User\HomeController@categoryProduct");
 Route::get("/home/detail/{detail}/{id}","User\HomeController@detail");
