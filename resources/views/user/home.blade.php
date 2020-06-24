@@ -10,6 +10,49 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    .my_title {
+        float: left;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+    .my_title .center_t {
+        display: inline-block;
+    }
+
+    .my_title .left_t {
+        width: 38px;
+        height: 42px;
+        float: left;
+    }
+
+    .my_title .title_t {
+        float: left;
+        height: 42px;
+        background: #ffffff;
+        position: relative;
+        z-index: 1;
+    }
+
+    .my_title .right_t {
+        background: url(../images/right_line.png) no-repeat;
+        width: 38px;
+        height: 42px;
+        float: left;
+    }
+
+    .my_title .line_t {
+        height: 2px;
+        width: 100%;
+        background: #dddddd;
+        position: absolute;
+        top: 21px;
+    }
+    </style>
 </head>
 
 <body>
@@ -18,7 +61,7 @@
     <div class="container">
         <br>
         <div class="row">
-            @foreach($topProduct as $item)
+            @foreach($topProducts as $item)
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                 <div class="card">
                     <a href="">
@@ -31,11 +74,22 @@
                 </div>
             </div>
             @endforeach
-        </div><br>
-        <h1>Hàng mới về</h1>
+        </div>
+
+        @foreach ($categories as $cate)
+        <div class="my_title">
+            <div class="center_t">
+                <div class="title_t">
+                    <h2>---> {{$cate->name}} <---</h2>
+                </div>
+            </div>
+            <div class="line_t"></div>
+        </div>
+        <br>
+        <br>
         <div class="row">
-            @foreach($product as $item)
-            @if($item->status=="New")
+            @foreach($cate->products as $item)
+
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                 <div class="card">
                     <a href=""> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
@@ -47,60 +101,18 @@
                             <div class="price text-success">
                                 <h5 class="mt-4">{{$item->price}} đ</h5>
                             </div>
-                            <a href="/home/cart/{{$item->id}}" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Mua hàng</a>
+                            <a href="/home/cart/{{$item->id}}" class="btn btn-danger mt-3"><i
+                                    class="fas fa-shopping-cart"></i> Mua hàng</a>
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
-            @endif
+
             @endforeach
         </div>
-        <h1>Bông tai</h1>
-        <div class="row">
-            @foreach($product as $item)
-            @if($item->category=="Bông tai")
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="card">
-                    <a href=""> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
-                    </a>
-                    <div class="card-body">
-                        <h4 class="card-title">{{$item->name}}</h4>
-                        <h6 class="card-subtitle mb-2 text-muted"></h6>
-                        <div class="buy d-flex justify-content-between align-items-center">
-                            <div class="price text-success">
-                                <h5 class="mt-4">{{$item->price}} đ</h5>
-                            </div>
-                            <a href="/home/cart/{{$item->id}}" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Mua hàng</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-            @endforeach
-        </div>
-        <h1>Nhẫn</h1>
-        <div class="row">
-            @foreach($product as $item)
-            @if($item->category=="Nhẫn")
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="card">
-                    <a href=""> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
-                    </a>
-                    <div class="card-body">
-                        <h4 class="card-title">{{$item->name}}</h4>
-                        <h6 class="card-subtitle mb-2 text-muted"></h6>
-                        <div class="buy d-flex justify-content-between align-items-center">
-                            <div class="price text-success">
-                                <h5 class="mt-4">{{$item->price}} đ</h5>
-                            </div>
-                            <a href="/home/cart/{{$item->id}}" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Mua hàng</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-            @endforeach
-        </div>
+        @endforeach
+
     </div>
     <br>
     @include("partials.footer")

@@ -12,35 +12,83 @@
     <link rel="stylesheet" href="/css/partials/header.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    body {
+        background-image: url(/storage/public/loginimg.jpg);
+    }
+
+    .login {}
+
+    .card {
+        top: 80%;
+        left: 10%;
+        width: 600px;
+        height: 400px;
+        opacity: 1;
+    }
+
+    form {
+        padding: 50px;
+    }
+
+    i {
+        width: 50px;
+        font-size: 48px;
+    }
+    </style>
 </head>
 
 <body>
-    @include("partials.header")
-    <!-- @include("partials.image") -->
+    <div class="row">
+        <div class="login">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title" style="margin:auto;text-align: -webkit-center;">Đăng nhập</h2>
+                </div>
+                <div class="card-body">
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-            </div>
-            <div class="card-body">
-                <h2 class="card-title">Login form</h2>
-                <form action="/auth/login" method="POST">
-                    @csrf
-                    <div class="input-group">
-                        <input type="text" name="username" id="username" class="form-control" value=""
-                            required="required" placeholder="Username">
-                    </div>
-                    <div class="input-group">
-                        <input type="text" name="password" id="password" class="form-control" value=""
-                            required="required" placeholder="Password">
-                    </div><br>
-                    <p style="color:red">{{Request::get('error')}}</p>
-                    <button type="submit">Login</button>
+                    <form action="/auth/login" method="POST">
+                        @csrf
+                        <div class="input-group">
+                            <i class="fa fa-user" style="font-size:40px;"></i>
+                            <input type="text" name="username" id="username" class="form-control" value=""
+                                required="required" placeholder="Username">
+                        </div>
+                        <div class="input-group">
+                            <i class="fa fa-lock" style="font-size:40px;" aria-hidden="true"></i>
+                            <input type="password" name="password" id="password" class="form-control" value=""
+                                required="required" placeholder="Password">
+
+                        </div><br>
+
+                        <p style="color:red">{{Request::get('error')}}</p>
+                </div>
+                <div>Chưa có tài khoản: <a href="/auth/register">Đăng ký</a></div>
+                <div class="card-footer" style="padding-left:45%">
+                    <button type="submit" style="text-align:center">Login</button>
+                    
+                </div>
+                @if (count($errors) > 0)
+                <div class="error-message" style="color:red">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 </form>
+
             </div>
         </div>
     </div>
-    @include("partials.footer")
+
+    </div>
+
+    <div class="container">
+
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

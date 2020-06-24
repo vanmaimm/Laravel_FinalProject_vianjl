@@ -39,13 +39,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($product as $item)
+                        @foreach($products as $item)
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->name}}</td>
                             <td><img src="/storage/{{$item->image}}" alt="" style="width:100px;height:100px"></td>
                             <td>{{$item->status}}</td>
-                            <td>{{$item->category}}</td>
+                            <td>{{$item->category->name}}</td>
                             <td>{{$item->price}}</td>
                             <td>{{$item->quantity}}</td>
                             <td>{{$item->description}}</td>

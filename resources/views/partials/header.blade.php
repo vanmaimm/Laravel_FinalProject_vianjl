@@ -50,42 +50,11 @@
                 <div class="navbar1">
                     <a href="/home">Trang chủ</a>
                     <a href="#home">Sản phẩm mới</a>
+                    @foreach ($categories as $cate)
                     <div class="subnav">
-                        <a class="subnavbtn" href="#bring">Vòng tay <i class="fa fa-caret-down"></i></a>
-                        <div class="subnav-content">
-                            <a href="#bring"></a>
-                            <a href="#deliver">Bông tai</a>
-                            <a href="#package">Package</a>
-                            <a href="#express">Express</a>
-                        </div>
+                        <a class="subnavbtn" href="/home/{{$cate->name}}/{{$cate->id}}">{{$cate->name}} <i class="fa fa-caret-down"></i></a>
                     </div>
-                    <div class="subnav">
-                        <a class="subnavbtn" href="#bring">Dây chuyền <i class="fa fa-caret-down"></i></a>
-                        <div class="subnav-content">
-                            <a href="#link1">Link 1</a>
-                            <a href="#link2">Link 2</a>
-                            <a href="#link3">Link 3</a>
-                            <a href="#link4">Link 4</a>
-                        </div>
-                    </div>
-                    <div class="subnav">
-                        <a class="subnavbtn" href="#bring">Bông tai <i class="fa fa-caret-down"></i></a>
-                        <div class="subnav-content">
-                            <a href="#link1">Link 1</a>
-                            <a href="#link2">Link 2</a>
-                            <a href="#link3">Link 3</a>
-                            <a href="#link4">Link 4</a>
-                        </div>
-                    </div>
-                    <div class="subnav">
-                        <a class="subnavbtn" href="#bring">Nhẫn <i class="fa fa-caret-down"></i></a>
-                        <div class="subnav-content">
-                            <a href="#link1">Link 1</a>
-                            <a href="#link2">Link 2</a>
-                            <a href="#link3">Link 3</a>
-                            <a href="#link4">Link 4</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
