@@ -33,4 +33,10 @@ class HomeController extends Controller
         //echo "<pre>" . json_encode($catePro, JSON_PRETTY_PRINT). "</pre>"; 
         return view("user.category",["categories"=>$categories,'catePro'=>$catePro]);
     }
+    function detail($detail, $id){
+        $categories= Category::all();
+        $item=Product::find($id);
+      //  $item=DB::table("product")->where("id",$id)->first();
+        return view("user.detail",["categories"=>$categories,"item"=>$item]);
+    }
 }

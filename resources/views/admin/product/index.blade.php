@@ -71,6 +71,11 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div style="display: flex;justify-content: space-between;">
+
+                <a class="btn btn-success" href="/admin/product/?page={{$page-1}}">Previous</a>
+                <a class="btn btn-success" href="/admin/product/?page={{$page+1}}">Next</a>
+              </div>
             </div>
         </div>
     </div>

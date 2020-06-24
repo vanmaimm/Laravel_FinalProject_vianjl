@@ -64,13 +64,13 @@
             @foreach($topProducts as $item)
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                 <div class="card">
-                    <a href="">
+                    <a href="/home/{{$item->name}}/{{$item->id}}">
                         <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
                     </a>
                 </div>
                 <div class="card-body">
                     <div style=""><span style="text-align:center;margin:auto">{{$item->name}}</span></div>
-                    <form action="/home/{{$item->name}}/{{$item->id}}" method="GET"><button>Chi tiết</button></form>
+                    <form action="/home/detail/{{$item->name}}/{{$item->id}}" method="GET"><button>Chi tiết</button></form>
                 </div>
             </div>
             @endforeach
@@ -92,7 +92,7 @@
 
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                 <div class="card">
-                    <a href=""> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
+                    <a href="/home/detail/{{$item->name}}/{{$item->id}}"> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$item->name}}</h4>
