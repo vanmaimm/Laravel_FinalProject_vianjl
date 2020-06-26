@@ -10,65 +10,97 @@
     <link rel="stylesheet" href="/css/admin/dashboard.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    input,
+    select,
+    textarea {
+        width: 500px;
+    }
+
+    table {}
+
+    table tr {
+        margin-top: 100px;
+        padding-top: 100px;
+    }
+
+    form {
+        margin-left: 10%;
+    }
+    </style>
 </head>
 
 <body>
     <div class="row">
         @include ("partials.sidenav")
         <div class="col-md-10">
-        <form action="/admin/product" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
-            @csrf
-                <legend>Thêm sản phẩm</legend>
-                <span style="color:green">{{Request::get('alert')}}</span>
-                <div class="control-group">
-                    <label class="control-lable" for="name">Tên sản phẩm</label>
-                    <input type="text" class="control" name="name" id="name" value="" Required>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="img">Hình ảnh</label>
-                    <input id="img" name="img" class="input-file" type="file">
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="status">Tình trạng</label></label>
-                    <select class="control" name="status">
-                        <option value=""></option>
-                        <option value="Dây chuyền">Hàng mới</option>                        
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="cate">Loại</label></label>
-                    <select class="control" name="cate" Required>
-                        <option value="">Chọn loại</option>
-                        <option value="Dây chuyền">Dây chuyền</option>
-                        <option value="Nhẫn">Nhẫn</option>
-                        <option value="Vòng tay">Vòng tay</option>
-                        <option value="Bông tai">Bông tai</option>
-                        
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="price">Giá</label></label>
-                    <input type="text" class="control" name="price" id="price" value="">
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="quantity">Số lượng</label></label>
-                    <input type="text" class="control" name="quantity" id="quantity" value="">
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="desc">Mô tả</label>
-                    <textarea type="text" class="control" name="desc" id="desc" value=""></textarea>
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="size">Kích cỡ</label>
-                    <input type="text" class="control" name="size" id="size" value="">
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="design">Kiểu dáng</label>
-                    <input type="text" class="control" name="design" id="design" value="">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
-                </div>
+            <form action="/admin/product" method="POST" class="form-horizontal" role="form"
+                enctype="multipart/form-data">
+                @csrf
+                <h4>Thêm sản phẩm</h4>
+                <br><br>
+                <table class="xtable">
+                    <tr>
+                        <td> <label class="control-lable" for="name">Tên sản phẩm</label></td>
+                        <td><input type="text" class="control" name="name" id="name" value="" Required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="control-label" for="img">Hình ảnh</label></td>
+                        <td><input id="img" name="img" class="input-file" type="file"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="status">Tình trạng</label></label></td>
+                        <td> <select class="control" name="status">
+                                <option value="null" ></option>
+                                <option value="null" >Khong co</option>
+                                <option value="New">Hàng mới</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td><label class="control-lable" for="cate">Loại</label></td>
+                        <td><select class="control" name="cate" Required>
+                                <option value="">Chọn loại</option>
+                                @foreach($cates as $cate)
+                                <option value="{{$cate->id}}">{{$cate->name}}</option>
+
+                                @endforeach
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="price">Giá</label></label></td>
+                        <td> <input type="text" class="control" name="price" id="price" value=""></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="quantity">Số lượng</label></td>
+                        <td> <input type="text" class="control" name="quantity" id="quantity" value=""></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="desc">Mô tả</label>
+                        </td>
+                        <td> <textarea type="text" class="control" name="desc" id="desc" value=""></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label class="control-lable" for="design">Kiểu dáng</label>
+                        </td>
+                        <td><input type="text" class="control" name="design" id="design" value=""></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-primary">Thêm sản phẩm</button></td>
+
+                    </tr>
+                    @if (count($errors) > 0)
+                    <div class="error-message" style="color:red">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                </table>
             </form>
         </div>
     </div>

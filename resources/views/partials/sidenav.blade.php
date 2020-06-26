@@ -10,6 +10,10 @@
                     <a href="/admin/product/insert">Thêm sản phẩm</a>
                 </div>
                 <hr>
+                <div >
+                    <a href="/admin/category">Quản lý loại sản phẩm</a>
+                </div>
+                <hr>
                 <button class="dropdown-btn">Quản lý người dùng
                     <i class="fa fa-caret-down"></i>
                 </button>
@@ -25,5 +29,6 @@
                     <a href="#">Xem sản phẩm</a>
                     <a href="#">Thêm sản phẩm</a>
                 </div>
+                
             </div>
         </div>

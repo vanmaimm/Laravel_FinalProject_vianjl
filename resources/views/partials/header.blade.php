@@ -8,13 +8,14 @@
                 </div>
                 <div class="top-bar_right">
                     @if(Auth::user())
-                    <span style="border-right:solid black;border-width: 1px; padding-right:5px"> {{Auth::user()->name}}</span>
+                    <a style="border-right:solid black;border-width: 1px; padding-right:5px" href="/user/information">
+                        {{Auth::user()->username}}</a>
                     <a href="/auth/logout">Logout</a>
                     <!-- <form action="/auth/logout" method="get">
                         <button>Logout</button>
                     </form> -->
                     @else
-                     <span style="border-right:solid black;border-width: 1px; padding-right:5px">
+                    <span style="border-right:solid black;border-width: 1px; padding-right:5px">
                         <a href="/auth/login">Login</a>
                     </span>
                     <span>
@@ -47,15 +48,17 @@
                     </div>
                 </div>
 
-                <div class="navbar1">
-                    <a href="/home">Trang chủ</a>
-                    <a href="#home">Sản phẩm mới</a>
-                    @foreach ($categories as $cate)
-                    <div class="subnav">
-                        <a class="subnavbtn" href="/home/{{$cate->name}}/{{$cate->id}}">{{$cate->name}} <i class="fa fa-caret-down"></i></a>
-                    </div>
-                    @endforeach
+            </div>
+        </div>
+        <div class='row'>
+            <div class="navbar1">
+                <a href="/home">Trang chủ</a>
+                @foreach ($categories as $cate)
+                <div class="subnav">
+                    <a class="subnavbtn" href="/home/{{$cate->name}}/{{$cate->id}}">{{$cate->name}} <i
+                            class="fa fa-caret-down"></i></a>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

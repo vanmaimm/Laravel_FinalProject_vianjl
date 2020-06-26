@@ -22,12 +22,13 @@ Route::get("/auth/logout","Auth\loginController@logout");
 Route::get("/auth/register","Auth\RegisterController@index");
 Route::post("/auth/register","Auth\RegisterController@store");
 Route::get("/home","User\HomeController@index")->name("home");
-Route::get("/admin/dashboard","Admin\DashboardController@index")->name("admin.dashboard");
+Route::get("/admin/dashboard","Admin\DashboardController@index")->name("admin.dashboard")->middleware([adminLogin::class]);
 Route::get("/admin/product","Admin\DashboardController@product");
 Route::get("/admin/product/insert", "Admin\DashboardController@create")->name("admin.create");
 Route::post("/admin/product", "Admin\DashboardController@store");
 Route::delete("/admin/product/delete/{id}", "Admin\DashboardController@destroy");
-
+Route::get("/admin/category", "Admin\DashboardController@category");
+Route::delete("/admin/category/delete/{id}", "Admin\DashboardController@cateDestroy");
 
 Route::get("/home/{cateName}/{id}", "User\HomeController@categoryProduct");
 Route::get("/home/detail/{detail}/{id}","User\HomeController@detail");

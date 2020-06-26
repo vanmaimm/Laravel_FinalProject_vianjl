@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class LoginController extends Controller
 {
@@ -24,9 +25,11 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if($user->role=="admin"){
+             
               return redirect()->route("admin.dashboard");
             }else{
               return redirect()->route("home");
+              echo json_encode($user);
             }
         }
         else{

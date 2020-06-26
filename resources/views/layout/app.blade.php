@@ -62,10 +62,9 @@
 
                 <div class="navbar1">
                     <a href="/home">Trang chủ</a>
-                    <a href="#home">Sản phẩm mới</a>
                     @foreach ($categories as $cate)
                     <div class="subnav">
-                        <a class="subnavbtn" href="/home/{{$cate->name}}/{{$cate->id}}">{{$cate->name}} <i class="fa fa-caret-down"></i></a>
+                        <a class="subnavbtn" href="/home/{{$cate->name}}/{{$cate->id}}">{{$cate->name}} </a>
                     </div>
                     @endforeach
                 </div>
