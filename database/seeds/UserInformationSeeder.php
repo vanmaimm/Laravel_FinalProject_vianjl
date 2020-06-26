@@ -11,7 +11,7 @@ class UserInformationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("user_informations")->insert([
+        DB::table("user_information")->insert([
             'user_id'=>1,
             'name'=>"Mai Thi My Van",
             'address'=>"99 To Hien Thanh, Da Nang",

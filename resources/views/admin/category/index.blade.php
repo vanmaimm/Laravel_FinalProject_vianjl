@@ -27,7 +27,7 @@
                         <tr>
                             <th>#</th>
                             <th> Tên loại sản phẩm</th>
-                            <th colspan="2">.</th>
+                            <th colspan="2"><button id="add"><i class="fa fa-plus-square" aria-hidden="true"></i></button></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,14 +39,14 @@
                                 <form action="/admin/category/delete/{{$cate->id}}" method="POST" role="form">
                                     @csrf
                                     @method("DELETE")
-                                    <button type="submit">
+                                    <button type="submit" >
                                         <i class="fa fa-remove" aria-hidden="true"></i>
                                     </button>
                                 </form>
                             </td>
                             <td>
-                                <form action="/admin/category/edit/{{$cate->id}}" method="get">
-                                    <button>
+                                <form action="" method="get">
+                                    <button class="edit">
                                         <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                     </button>
                                 </form>
@@ -55,7 +55,25 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div> 
+            <div id="create" style="display:none">
+                <form action="/admin/category" method="POST" role="form">
+                    @csrf 
+                    <legend>Thêm loại sản phẩm</legend>
+                    <div class="form-group">
+                        <label for="">Tên loại sản phẩm</label></label>
+                        <input type="text" class="form-control" id="" name="name" style="width:50%">
+                    </div>   
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>   
             </div>
+           
+        <script language="javascript">
+ 
+            document.getElementById("add").onclick = function () {
+                document.getElementById("create").style.display = 'block';
+            }; 
+        </script>
         </div>
     </div>
     <script src="/js/admin/dashboard.js"></script>

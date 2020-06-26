@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Edit product</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +10,24 @@
     <link rel="stylesheet" href="/css/admin/dashboard.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    input,
+    select,
+    textarea {
+        width: 500px;
+    }
+
+    table {}
+
+    table tr {
+        margin-top: 100px;
+        padding-top: 100px;
+    }
+
+    form {
+        margin-left: 10%;
+    }
+    </style>
 </head>
 
 <body>
@@ -20,61 +38,81 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method("PATCH")
-                <legend>Thêm sản phẩm</legend>
-                <div class="control-group">
-                    <label class="control-lable" for="name">Tên sản phẩm</label>
-                    <input type="text" class="control" name="name" id="name" value="{{$product->name}}" Required>
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="status">Tình trạng</label>
-                    <input type="text" name="status" list="list" value="{{$product->status}}">
-                    <datalist id="list">
-                        <option value=""></option>
-                        <option value="Hàng mới">Hàng mới</option>
-                    </datalist>
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="cate">Loại</label>
-                    <input type="text" name="cate" list="listCate" value="{{$product->category}}">
-                    <datalist id="listCate">
-                        <option value="Dây chuyền">Dây chuyền</option>
-                        <option value="Nhẫn">Nhẫn</option>
-                        <option value="Vòng tay">Vòng tay</option>
-                        <option value="Bông tai">Bông tai</option>
-                    </datalist>
-                    <!-- <select class="control" name="cate" value="{{$product->category}}">
-                        <option value="">Chọn loại</option>
-                        <option value="Dây chuyền">Dây chuyền</option>
-                        <option value="Nhẫn">Nhẫn</option>
-                        <option value="Vòng tay">Vòng tay</option>
-                        <option value="Bông tai">Bông tai</option>
+                <h4>Chỉnh sửa sản phẩm</h4>
+                <br><br>
+                <table class="xtable">
+                    <tr>
+                        <td> <label class="control-lable" for="name">Tên sản phẩm</label></td>
+                        <td><input type="text" class="control" name="name" id="name" value="{{$product->name}}"
+                                Required></td>
+                    </tr>
+                    <tr>
+                        <td><label class="control-label" for="img">Hình ảnh</label></td>
+                        <td><input id="img" name="img" class="input-file" type="file"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="status">Tình trạng</label></label></td>
+                        <td> <select class="control" name="status">
+                                <option value="null"></option>
+                                <option value="null"
+                                @if ($product->status=='null')
+                                    selected
+                                @endif
+                                 >Không có</option>
+                                <option value="New" 
+                                 @if ($product->status=='New')
+                                    selected
+                                @endif>Hàng mới</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td><label class="control-lable" for="cate">Loại</label></td>
+                        <td><select class="control" name="cate" Required>
+                                <option value="">Chọn loại</option>
+                                @foreach($cates as $cate)
+                                @if ($cate->id==$product->cate_id)
+                                <option value="{{$cate->id}}" selected>{{$cate->name}}</option>
+                                @else
+                                <option value="{{$cate->id}}">{{$cate->name}}</option>
+                                @endif
+                                @endforeach
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="price">Giá</label></label></td>
+                        <td> <input type="text" class="control" name="price" id="price" value="{{$product->price}}"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="quantity">Số lượng</label></td>
+                        <td> <input type="text" class="control" name="quantity" id="quantity" value="{{$product->quantity}}"></td>
+                    </tr>
+                    <tr>
+                        <td> <label class="control-lable" for="desc">Mô tả</label>
+                        </td>
+                        <td> <textarea type="text" class="control" name="desc" id="desc" value="{{$product->description}}"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label class="control-lable" for="design">Kiểu dáng</label>
+                        </td>
+                        <td><input type="text" class="control" name="design" id="design" value="{{$product->design}}"></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button></td>
 
-                    </select> -->
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="price">Giá</label>
-                    <input type="text" class="control" name="price" id="price" value="{{$product->price}}">
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="quantity">Số lượng</label>
-                    <input type="text" class="control" name="quantity" id="quantity" value="{{$product->quantity}}">
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="desc">Mô tả</label>
-                    <textarea type="text" class="control" name="desc" id="desc"
-                        value="{{$product->description}}"></textarea>
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="size">Kích cỡ</label>
-                    <input type="text" class="control" name="size" id="size" value="{{$product->size}}">
-                </div>
-                <div class="control-group">
-                    <label class="control-lable" for="design">Kiểu dáng</label>
-                    <input type="text" class="control" name="design" id="design" value="{{$product->design}}">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
-                </div>
+                    </tr>
+                    @if (count($errors) > 0)
+                    <div class="error-message" style="color:red">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                </table>
             </form>
         </div>
     </div>

@@ -59,6 +59,40 @@ class DashboardController extends Controller
         $newProduct->save();
 
     }
+    function edit($id){
+        $cates=Category::all();
+        $product=Product::find($id);
+        return view("admin.product.edit", ["cates"=>$cates, "product"=>$product]);
+    }
+    function update($id, Request $request){
+        $request->validate([
+            "name"=>"required",
+            'img' => 'required',
+            "cate"=>"required",
+            "quantity"=>"required|min:1|digits_between: 1,5",
+            "price"=>"required"
+        ]);
+        $name=$request->input("name");
+        $img = $request->file("img")->store("public");
+        $status= $request->input("status");
+        $cate = $request->cate;
+        $price = $request->price;
+        $quantity = $request->quantity;
+        $desc = $request->desc;
+        $design = $request->design;
+
+        $product = Product::find($id);
+        $product->name=$name;
+        $product->image=$img;
+        $product->status=$status;
+        $product->cate_id=$cate;
+        $product->price=$price;
+        $product->description=$desc;
+        $product->quantity=$quantity;
+        $product->design=$design;
+        $product->save();
+        return redirect("/admin/product"); 
+    }
     function destroy($id){
         Cart::where('product_id',$id)->delete();
         Product::find($id)->delete();
@@ -67,6 +101,13 @@ class DashboardController extends Controller
     function category(){
         $categories=Category::all();
         return view("admin.category.index", ["categories"=>$categories]);
+    }
+    function cateStore(Request $request){
+        $name= $request->name;
+        $cate = new Category();
+        $cate->name=$name;
+        $cate->save();
+        return redirect("admin/category");
     }
     function cateDestroy($id){
         Product::where('cate_id',$id )->delete();

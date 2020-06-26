@@ -39,4 +39,7 @@ class HomeController extends Controller
       //  $item=DB::table("product")->where("id",$id)->first();
         return view("user.detail",["categories"=>$categories,"item"=>$item]);
     }
+    function cart(){
+        return view("user.cart");
+    }
 }

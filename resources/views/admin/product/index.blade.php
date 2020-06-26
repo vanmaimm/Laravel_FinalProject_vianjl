@@ -56,7 +56,7 @@
                                     @csrf
                                     @method("DELETE")
                                     <button type="submit">
-                                        <i class="fa fa-remove" aria-hidden="true"></i>
+                                        <i class="fa fa-remove" aria-hiddeasn="true"></i>
                                     </button>
                                 </form>
                             </td>

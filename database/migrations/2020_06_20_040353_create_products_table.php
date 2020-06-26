@@ -17,15 +17,15 @@ class CreateProductsTable extends Migration
             $table->id()->autoIncrement();
             $table->string('name', 255)->charset('utf8mb4');
             $table->string('image', 255);
-            $table->string('status', 100)->charset('utf8mb4');
+            $table->string('status', 100)->default('New')->charset('utf8mb4');
             $table->unsignedBigInteger('cate_id');
             $table->double('price', 255);
             $table->integer('quantity');
-            $table->string('description', 5000)->charset('utf8mb4');
-            $table->string('design', 100)->charset('utf8mb4');       
+            $table->string('description', 5000)->default(null)->charset('utf8mb4');
+            $table->string('design', 100)->default(null)->charset('utf8mb4');       
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign('cate_id')->references('id')->on('categories');
+            $table->foreign('cate_id')->references('id')->on('categories')->onDelete('cascade');;
         });
     }
 

@@ -27,7 +27,7 @@
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <h6>{{$item->name}}</h6>
                 <p>Trạng thái:
-                    @if($item->status!="")
+                    @if($item->status!="null")
                     <span>{{$item->status}}/</span>
                     @endif
                     @if($item->quantity==5)

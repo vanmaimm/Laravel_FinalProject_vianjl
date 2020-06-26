@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="cart">
-                            <a href="">Giỏ hàng <i class="fa fa-shopping-cart" aria-hidden="true"></i> (0)</a>
+                            <a href="/user/cart">Giỏ hàng <i class="fa fa-shopping-cart" aria-hidden="true"></i> (0)</a>
                         </div>
                     </div>
                 </div>

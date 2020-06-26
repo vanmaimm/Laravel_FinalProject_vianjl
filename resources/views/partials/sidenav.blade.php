@@ -29,6 +29,9 @@
                     <a href="#">Xem sản phẩm</a>
                     <a href="#">Thêm sản phẩm</a>
                 </div>
-                
+                <hr>
+                <div>
+                <a href="/auth/logout">Logout</a>
+                </div>
             </div>
         </div>
