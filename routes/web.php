@@ -44,3 +44,6 @@ Route::get("/home/{cateName}/{id}", "User\HomeController@categoryProduct");
 Route::get("/home/detail/{detail}/{id}","User\HomeController@detail");
 
 Route::get("/user/cart","User\Homecontroller@cart");
+Route::get("/user/cart/{id}","User\Homecontroller@cartStore");
+Route::delete("/user/cart/{pro}/{user}", "User\Homecontroller@destroy");
+Route::post("/user/order","User\Homecontroller@order");

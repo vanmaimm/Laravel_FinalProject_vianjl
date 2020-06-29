@@ -21,7 +21,7 @@
                 </div>
                 <div class="top-bar_right">
                     @if(Auth::user())
-                    <span style="border-right:solid black;border-width: 1px; padding-right:5px"> {{Auth::user()->name}}</span>
+                    <span style="border-right:solid black;border-width: 1px; padding-right:5px"> {{Auth::user()->username}}</span>
                     <a href="/auth/logout">Logout</a>
                     <!-- <form action="/auth/logout" method="get">
                         <button>Logout</button>

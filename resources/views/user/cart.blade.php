@@ -2,29 +2,75 @@
 @section('content')
 
 <div class="container">
-    <h4>Trang chu > {{$catePro->name}}</h4>
-    <div class="row">
-        @foreach($catePro->products as $item)
-        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-            <div class="card">
-                <a href=""> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title">{{$item->name}}</h4>
-                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                    <div class="buy d-flex justify-content-between align-items-center">
-                        <div class="price text-success">
-                            <h5 class="mt-4">{{$item->price}} đ</h5>
-                        </div>
-                        <a href="/home/cart/{{$item->id}}" class="btn btn-danger mt-3"><i
-                                class="fas fa-shopping-cart"></i> Mua hàng</a>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
-        @endforeach
+    @if(Auth::user())
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình ảnh</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>.</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php $total = 0 ?>
+                @foreach ($carts as $cart)
+                <tr>
+                    <td>1</td>
+                    <td>{{$cart->products->name}}</td>
+                    <td><img src="/storage/{{$cart->products->image}}" alt="" style="width:100px;height:100px"></td>
+                    <td>{{$cart->products->price}}</td>
+                    <td class="cart_quantity">
+                        <a class="cart_quantity_up"
+                            href='{{url("user/cart?product_id=$cart->product_id&increment=1")}}'> + </a>
+                        <input class="cart_quantity_input" type="text" name="quantity" value="{{$cart->quantity}}"
+                            autocomplete="off" size="2">
+                        <a class="cart_quantity_down"
+                            href='{{url("user/cart?product_id=$cart->product_id&decrease=1")}}'> - </a>
+
+                    </td>
+                    <td>
+                        {{$cart->products->price*$cart->quantity}}
+                        <?php $total+=$cart->products->price*$cart->quantity; ?>
+                    </td>
+                    <td>
+                        <form action="/user/cart/{{$cart->product_id}}/{{Auth::user()->id}}" method="POST">
+                            @csrf 
+                            @method("DELETE")
+                            <button><i class="fa fa-remove" aria-hidden="true"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        
+        <table class="table table-hover " style="width: 200px !important;position: inherit;float: right;text-size:30px">
+            <thead>
+                <tr>
+                    <th>Thành tiền: {{$total}}</th> 
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>Tổng cộng: {{$total}}</td>
+            </tr>
+                <tr>
+                    <td><form action="/user/order" method="post">@csrf<button>Đặt mua</button></form></td>
+                </tr>
+            </tbody>
+        </table>
+        
     </div>
+
+    @else
+    <div>Bạn chưa đăng nhập, vui lòng đăng nhập <a href="/auth/login">Tại đây</a> để có thể mua hàng</div>
+    @endif
 </div>
 
 

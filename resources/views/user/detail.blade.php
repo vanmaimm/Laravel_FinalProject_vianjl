@@ -38,7 +38,7 @@
                     @endif </p>
 
                 <h4>{{$item->price}}đ</h4>
-                <form action="" method="get">
+                <form action="/user/cart/{{$item->id}}" method="get">
                     <button style="color:white;background-color:black;width:100%;text-align:center">Mua ngay</button>
                 </form>
                 <p>Thông tin sản phẩm</p>

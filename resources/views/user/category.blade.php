@@ -16,7 +16,7 @@
                         <div class="price text-success">
                             <h5 class="mt-4">{{$item->price}} đ</h5>
                         </div>
-                        <a href="/home/cart/{{$item->id}}" class="btn btn-danger mt-3"><i
+                        <a href="/user/cart/{{$item->id}}" class="btn btn-danger mt-3"><i
                                 class="fas fa-shopping-cart"></i> Mua hàng</a>
                     </div>
                 </div>
