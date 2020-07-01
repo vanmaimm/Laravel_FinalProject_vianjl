@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     public function products(){
-        return $this->hasMany("App\Product","cate_id", "id");
+        return $this->hasMany("App\Product","cate_id", "id")->where("quantity", ">", 0);
     }
 }

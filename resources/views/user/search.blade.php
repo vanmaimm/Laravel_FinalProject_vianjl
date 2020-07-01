@@ -2,9 +2,9 @@
 @section('content')
 <br>
 <div class="container">
-    <h4>Trang chu > {{$catePro->name}}</h4>
+    <h4>Trang chu > search</h4>
     <div class="row">
-        @foreach($catePro->products as $item)
+        @foreach($products as $item)
         <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <div class="card">
                 <a href=""> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
@@ -26,6 +26,4 @@
         @endforeach
     </div>
 </div>
-
-
 @endsection

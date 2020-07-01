@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/css/partials/header.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -60,22 +61,6 @@
     @include("partials.image")
     <div class="container">
         <br>
-        <div class="row">
-            @foreach($topProducts as $item)
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="card">
-                    <a href="/home/{{$item->name}}/{{$item->id}}">
-                        <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <div style=""><span style="text-align:center;margin:auto">{{$item->name}}</span></div>
-                    <form action="/home/detail/{{$item->name}}/{{$item->id}}" method="GET"><button>Chi tiết</button></form>
-                </div>
-            </div>
-            @endforeach
-        </div>
-
         @foreach ($categories as $cate)
         <div class="my_title">
             <div class="center_t">

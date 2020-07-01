@@ -34,12 +34,10 @@
                         <h1 class="name-shop"><a href="/home">VianJl Shop</a></h1>
                     </div>
                     <div class="col-md-7">
-                        <div class="search-bar">
-                            <div class="enter">
-                                <input type="text" name="search" id="input" class="form-control" value=""
-                                    required="required" title="">
-                            </div>
-                        </div>
+                        <form action="/search" method="get" class="form-inline search" role="form">
+                                <input type="text"  id="" placeholder="Tìm kiếm sản phẩm" name='key'>     
+                            <button type="submit" id="searchSubmit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
                     </div>
                     <div class="col-md-2">
                         <div class="cart">
@@ -49,7 +47,7 @@
                                 @else
                                 0
                                 @endif
-                            )</a>
+                                )</a>
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,6 @@
                             <th>Giá</th>
                             <th>Số lượng</th>
                             <th>Mô tả</th>
-                            <th>Kích cỡ</th>
                             <th>Kiểu dáng</th>
                             <th colspan="2">.</th>
                         </tr>
@@ -49,7 +48,6 @@
                             <td>{{$item->price}}</td>
                             <td>{{$item->quantity}}</td>
                             <td>{{$item->description}}</td>
-                            <td>{{$item->size}}</td>
                             <td>{{$item->design}}</td>
                             <td>
                                 <form action="/admin/product/delete/{{$item->id}}" method="POST" role="form">

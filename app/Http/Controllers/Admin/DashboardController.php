@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Cart;
 Use App\Category;
+Use App\Order;
 
 class DashboardController extends Controller
 {
     function index(){
         return view("admin.dashboard");
     }
+
+    ///Product
     function product(Request $request){
         $page = $request->page;
         $products = Product::all()->skip($page * 5)->take(5);
@@ -98,6 +101,7 @@ class DashboardController extends Controller
         Product::find($id)->delete();
         return redirect("/admin/product");
     }
+    //Category
     function category(){
         $categories=Category::all();
         return view("admin.category.index", ["categories"=>$categories]);
@@ -115,4 +119,13 @@ class DashboardController extends Controller
         return redirect("/admin/category");
     }
 
+    //Order
+    function order(){
+        $orders= Order::all();
+      
+        foreach ($orders as $order){   
+                $order->detail=json_decode($order->detail);
+        }
+        return view("admin.order.index", ["orders"=>$orders]);
+    }
 }

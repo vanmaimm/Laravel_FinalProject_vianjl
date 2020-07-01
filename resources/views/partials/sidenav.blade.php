@@ -14,21 +14,16 @@
                     <a href="/admin/category">Quản lý loại sản phẩm</a>
                 </div>
                 <hr>
-                <button class="dropdown-btn">Quản lý người dùng
+                <!-- <button class="dropdown-btn">Quản lý người dùng
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
                     <a href="#">Xem sản phẩm</a>
                     <a href="#">Thêm sản phẩm</a>
-                </div>
-                <hr>
-                <button class="dropdown-btn">Quản lý thanh toán
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-container">
-                    <a href="#">Xem sản phẩm</a>
-                    <a href="#">Thêm sản phẩm</a>
-                </div>
+                </div> -->
+                <!-- <hr> -->
+                <a href="/admin/order">Quản lý đặt hàng</a>
+               
                 <hr>
                 <div>
                 <a href="/auth/logout">Logout</a>
