@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
             'name'=>"Nhẫn"
         ]);
         DB::table("categories")->insert([
-            'name'=>"Vòng tay"
+            'name'=>"Lắc tay"
         ]);
         DB::table("categories")->insert([
             'name'=>"Hoa tai"

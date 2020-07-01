@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
         for($i=0;$i<20;$i++){
             if($i<5){    
                 DB::table("products")->insert([
-                    'name'=>$faker->name,
+                    'name'=>"Dây chuyền ".$faker->name,
                     'image'=> "public/dc4.jfif",
                     'status'=>"New",
                     'cate_id'=>1,
@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
                 ]);
             }else if($i<10){
                 DB::table("products")->insert([
-                    'name'=>$faker->name,
+                    'name'=>"Nhẫn ".$faker->name,
                     'image'=>"public/n1.jfif",
                     'status'=>"null",
                     'cate_id'=>2,
@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
                 ]);
             }else if($i<15){
                 DB::table("products")->insert([
-                    'name'=>$faker->name,
+                    'name'=>"Lắc tay ".$faker->name,
                     'image'=>"public/l7.jfif",
                     'status'=>"New",
                     'cate_id'=>3,
@@ -49,10 +49,10 @@ class ProductSeeder extends Seeder
                 ]);
             } else {
                 DB::table("products")->insert([
-                    'name'=>$faker->name,
+                    'name'=>"Hoa tai ".$faker->name,
                     'image'=>"public/b5.jfif",
                     'status'=>"null",
-                    'cate_id'=>4,
+                    'cate_id'=>1,
                     'price'=>100000,
                     'quantity'=>1,
                     'description'=>"",
