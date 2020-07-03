@@ -62,31 +62,25 @@
                         </div><br>
 
                         <p style="color:red">{{Request::get('error')}}</p>
-                </div>
-                <div>Chưa có tài khoản: <a href="/auth/register">Đăng ký</a></div>
-                <div class="card-footer" style="padding-left:45%">
-                    <button type="submit" style="text-align:center">Login</button>
-                    
-                </div>
-                @if (count($errors) > 0)
-                <div class="error-message" style="color:red">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-                </form>
 
+                        <div>Chưa có tài khoản: <a href="/auth/register">Đăng ký</a></div>
+                        <div class="card-footer" style="padding-left:45%">
+                            <button type="submit" style="text-align:center">Login</button>
+
+                        </div>
+                        @if (count($errors) > 0)
+                        <div class="error-message" style="color:red">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-
-    </div>
-
-    <div class="container">
-
     </div>
 
     <!-- Optional JavaScript -->

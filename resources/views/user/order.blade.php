@@ -26,6 +26,8 @@
 </head>
 
 <body>
+
+
     <div class="container">
         <form action="/order" method="post">
             <div class="row">
@@ -97,13 +99,7 @@
                                 <td colspan="4"><b> Tạm tính:</b></td>
                                 <td colspan="1">{{$total}}</td>
                             </tr>
-                            <tr>
-                                <form action="" method="get">
-                                    <td colspan="2"><b>Mã giảm giá</b> </td>
-                                    <td colspan="2"><input type="text" name="mgg"></td>
-                                    <td colspan="2"><button>Áp dụng</button> </td>
-                                </form>
-                            </tr>
+
                             <tr>
                                 <td colspan="4"><b> Tổng cộng:</b></td>
                                 <td colspan="1">
@@ -111,17 +107,41 @@
                                     {{$total}}
                                 </td>
                             </tr>
+                            <!-- <tr>
+                                <td colspan="2"><b>Mã giảm giá</b> </td>
+                                <td colspan="2"><input type="text" name="mgg" id='mgg'></td>
+                                <td colspan="2"><input type="button" onclick="abc()" id="amgg" value="Áp dụng"></td>
+                            </tr> -->
                             <tr>
-                                <td colspan=3><b></b></td>
-                                <td colspan=1><button>Hoàn tất đơn hàng</button></td>
+                                <td colspan=2><b></b></td>
+                                <td colspan=3><button style='width:100%'>Hoàn tất đơn hàng</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </form>
+        <!-- <div class="row">
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <table>
+                    <tr>
+                        <form action="" method="get" style="display:none">
+                            <td colspan="2"><b>Mã giảm giá</b> </td>
+                            <td colspan="2"><input type="text" name="mgg" id="mgg"></td>
+                            <td colspan="2"><button>Áp dụng</button> </td>
+                        </form>
+                    </tr>
+                </table>
+            </div>
+
+        </div> -->
 
     </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

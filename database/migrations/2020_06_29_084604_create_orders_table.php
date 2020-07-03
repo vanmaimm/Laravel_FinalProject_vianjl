@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string("mgg")->default('');
             $table->string("payment")->default("COD");
             $table->integer("transport_fee")->default(0);
+            $table->string("status")->default("New");
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onDelete('cascade');

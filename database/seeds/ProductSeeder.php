@@ -52,7 +52,7 @@ class ProductSeeder extends Seeder
                     'name'=>"Hoa tai ".$faker->name,
                     'image'=>"public/b5.jfif",
                     'status'=>"null",
-                    'cate_id'=>1,
+                    'cate_id'=>4,
                     'price'=>100000,
                     'quantity'=>1,
                     'description'=>"",

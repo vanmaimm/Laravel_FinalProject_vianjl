@@ -105,7 +105,7 @@ class HomeController extends Controller
             return redirect("/user/cart");
         }
     }
-    function order(){
+    function order(Request $request){
         $pros=Cart::where("user_id", Auth::user()->id)->get();
         foreach($pros as $pro){
             $pro->products;

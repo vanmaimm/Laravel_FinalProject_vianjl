@@ -3,11 +3,12 @@
 <br>
 <div class="container">
     <h4>Trang chu > {{$catePro->name}}</h4>
+    
     <div class="row">
         @foreach($catePro->products as $item)
         <div class="col-12 col-sm-8 col-md-6 col-lg-4">
             <div class="card">
-                <a href=""> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
+                <a href="/home/detail/{{$item->name}}/{{$item->id}}"> <img class="card-img" src="/storage/{{$item->image}}" alt="Vans">
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">{{$item->name}}</h4>

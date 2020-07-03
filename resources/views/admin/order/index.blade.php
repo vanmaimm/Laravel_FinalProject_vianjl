@@ -63,11 +63,13 @@
                             <td>{{$order->transport_fee}}</td>
                             <td>{{$order->total}}</td>
                             <td>
-                                <button type="button" class="btn btn-danger">{{$order->status}}</button>
+                                <form action="/action/{{$order->id}}" method="POST">
+                                    <button type="button" class="btn btn-danger">{{$order->status}}</button>
+                                </form>
                             </td>
                             <td>
                                 <!-- <button><i class="fa fa-eye" aria-hidden="true"></i></button> -->
-                                
+
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#order_{{$order->id}}">
                                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -86,39 +88,40 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                              
-                                              <table class="table">
-                                                  <thead style='background-color:pink'>
-                                                      <tr>
-                                                          <th>Tên sản phẩm</th>
-                                                          <th>Hình ảnh</th>
-                                                          <th>Số lượng</th>
-                                                          <th>Giá</th>
-                                                          <th>Thành tiền</th>
-                                                      </tr>
-                                                  </thead>
-                                                  <tbody>
-                                                  <?php $total=0 ?>
-                                                  @foreach ($order->detail as $product)
-                                                      <tr>
-                                                          <td> {{$product->product_name}}</td>
-                                                          <td> <img src="/storage/{{$product->image}}" alt="" style="width:50px"></td>
-                                                          <td> {{$product->quantity}}</td>
-                                                          <td> {{$product->price}}</td>
-                                                          <td> {{$product->price*$product->quantity}}</td>
-                                                          <?php $total+= $product->price*$product->quantity?>
-                                                      </tr>
-                                                    @endforeach
-                                                    <tr>
-                                                    <td></td>
-                                                        <td colspan="3"><b>Tổng tiền:</b>  </td>
-                                                        <td > {{$total}} </td>
-                                                    </tr>
-                                                  </tbody>
-                                              </table>
-                                              
+
+                                                <table class="table">
+                                                    <thead style='background-color:pink'>
+                                                        <tr>
+                                                            <th>Tên sản phẩm</th>
+                                                            <th>Hình ảnh</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Giá</th>
+                                                            <th>Thành tiền</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php $total=0 ?>
+                                                        @foreach ($order->detail as $product)
+                                                        <tr>
+                                                            <td> {{$product->product_name}}</td>
+                                                            <td> <img src="/storage/{{$product->image}}" alt=""
+                                                                    style="width:50px"></td>
+                                                            <td> {{$product->quantity}}</td>
+                                                            <td> {{$product->price}}</td>
+                                                            <td> {{$product->price*$product->quantity}}</td>
+                                                            <?php $total+= $product->price*$product->quantity?>
+                                                        </tr>
+                                                        @endforeach
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="3"><b>Tổng tiền:</b> </td>
+                                                            <td> {{$total}} </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
                                             </div>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
